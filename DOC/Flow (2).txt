@@ -1,0 +1,179 @@
+# TravelTales Flow Chart
+
+## 1. Overall System Flow Diagram
+
+```text
+[Creator / Consumer]
+          |
+          v
+     [Web Browser]
+          |
+          v
+   [React Frontend]
+          |
+          v
+[Node.js / Express API]
+      /             \
+     /               \
+    v                 v
+[Cloud Storage]   [MongoDB Atlas / Cosmos DB]
+  (Photos)        (Users, Metadata,
+                    Comments, Ratings)
+```
+
+---
+
+## 2. Photo Upload Flow Diagram
+
+```text
+[Creator Login]
+       |
+       v
+[Open Upload Page]
+       |
+       v
+[Select Photo + Enter Metadata]
+       |
+       v
+[Frontend Sends Request]
+       |
+       v
+[Backend Validates User + File]
+       |
+       +-------------------+
+       |                   |
+       v                   v
+[Upload to Storage]   [Store Metadata in DB]
+       |                   |
+       +---------+---------+
+                 |
+                 v
+      [Send Success Response]
+                 |
+                 v
+      [Display Uploaded Photo]
+```
+
+---
+
+## 3. Consumer Interaction Flow Diagram
+
+```text
+[Consumer Opens Gallery]
+         |
+         v
+[Frontend Requests Photos]
+         |
+         v
+[Backend Fetches Photo Data]
+         |
+         +-------------------+
+         |                   |
+         v                   v
+ [Read Metadata]       [Read Image URL]
+   [Database]         [Cloud Storage/CDN]
+         |                   |
+         +---------+---------+
+                   |
+                   v
+      [Frontend Displays Photos]
+                   |
+                   v
+       [Consumer Opens Photo Page]
+                   |
+                   v
+      [Add Comment or Rating]
+                   |
+                   v
+      [Backend Stores Interaction]
+                   |
+                   v
+      [Updated Photo Details Shown]
+```
+
+---
+
+## 4. Search Flow Diagram
+
+```text
+[Consumer Enters Search Term]
+              |
+              v
+   [Frontend Sends Search Request]
+              |
+              v
+   [Backend Receives Search Query]
+              |
+              v
+[Database Searches Title / City / Country]
+              |
+              v
+     [Matching Results Returned]
+              |
+              v
+   [Frontend Displays Search Results]
+```
+
+---
+
+## 5. Authentication Flow Diagram
+
+```text
+[User Opens Login Page]
+          |
+          v
+ [Enter Email + Password]
+          |
+          v
+[Frontend Sends Login Request]
+          |
+          v
+ [Backend Verifies User Data]
+          |
+          v
+ [Generate JWT Token]
+          |
+          v
+[Return Token to Frontend]
+          |
+          v
+ [Store Token for Session]
+          |
+          v
+[Grant Access Based on Role]
+```
+
+---
+
+## 6. CI/CD Pipeline Flow Diagram
+
+```text
+[Developer Pushes Code to GitHub]
+                 |
+                 v
+      [GitHub Actions Workflow Triggered]
+                 |
+                 v
+         [Install Dependencies]
+                 |
+                 v
+            [Run Tests]
+                 |
+                 v
+           [Build Project]
+                 |
+                 v
+      +---------------------------+
+      |                           |
+      v                           v
+[Deploy Frontend]            [Deploy Backend]
+[Static Web Hosting]         [Cloud App Service]
+      |                           |
+      +-------------+-------------+
+                    |
+                    v
+          [Application Live]
+                    |
+                    v
+     [Users Access Deployed System]
+```

@@ -1,0 +1,37 @@
+.hero-section {
+  padding: 80px 0 60px;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(to right, #f8fafc, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.photo-grid {
+  columns: 3 300px;
+  column-gap: 24px;
+}
+
+.photo-grid > div {
+  break-inside: avoid;
+  margin-bottom: 24px;
+}
+
+.loading-state {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  padding: 60px 0;
+}

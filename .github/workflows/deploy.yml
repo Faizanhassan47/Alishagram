@@ -1,0 +1,65 @@
+name: TravelTales CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: |
+            frontend/package-lock.json
+            backend/package-lock.json
+
+      # Build Frontend
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Build Frontend Application
+        working-directory: ./frontend
+        run: npm run build
+
+      # Backend Checks
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      # Ensure backend launches without crashes (optional quick check)
+      - name: Test backend syntax logic
+        working-directory: ./backend
+        run: node -c src/server.js
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      
+      - name: Output deployment instruction
+        run: |
+          echo "CI tests passed! Prepare deployment hooks for Vercel/Heroku logic here."
+          # If you use Vercel, you can connect Vercel GitHub integration to auto-deploy main branch
+          # Alternatively, you can use action 'amondnet/vercel-action@v20' for frontend
+          # and 'Deploy to Heroku' action for backend.
