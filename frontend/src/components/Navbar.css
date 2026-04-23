@@ -11,31 +11,27 @@
 }
 
 .brand-minimal {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--text);
+  font-family: 'Rubik Storm', cursive;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  background: linear-gradient(120deg, #E0906A 0%, #C07050 45%, #F0B080 75%, #C07050 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: brandShimmer 6s linear infinite;
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
 }
 
-.theme-toggle-minimal {
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  cursor: pointer;
-  padding: 8px 16px;
-  border: 1px solid var(--border);
-  border-radius: 0;
-  color: var(--text);
-  transition: all 0.2s;
+@keyframes brandShimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 220% center; }
 }
 
-.theme-toggle-minimal:hover {
-  background: var(--text);
-  color: var(--bg);
-}
 
 .menu-toggle {
   display: flex;
