@@ -4,6 +4,7 @@ import './CursorCustom.css';
 const CursorCustom = () => {
   const cursorRef = useRef(null);
   const [cursorState, setCursorState] = useState('default'); // 'default', 'pointer', 'view'
+  const stateRef = useRef('default');
 
   useEffect(() => {
     let animationFrameId;
@@ -14,22 +15,31 @@ const CursorCustom = () => {
       animationFrameId = requestAnimationFrame(() => {
         if (cursorRef.current) {
           // Use translate3d for hardware acceleration, bypassing React state
-          cursorRef.current.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
+          cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
         }
       });
       
       const target = e.target;
+      if (!target) return;
+
+      let newState = 'default';
+      
       const isPhoto = target.closest('.pcard') || target.closest('.hp-mosaic-item') || target.closest('.hp-journal-img-wrap');
       
       if (isPhoto) {
-        setCursorState('view');
+        newState = 'view';
       } else {
-        const isClickable = window.getComputedStyle(target).cursor === 'pointer' || 
-                           target.tagName === 'A' || 
+        const isClickable = target.tagName === 'A' || 
                            target.tagName === 'BUTTON' ||
                            target.closest('button') ||
-                           target.closest('a');
-        setCursorState(isClickable ? 'pointer' : 'default');
+                           target.closest('a') ||
+                           window.getComputedStyle(target).cursor === 'pointer';
+        newState = isClickable ? 'pointer' : 'default';
+      }
+
+      if (stateRef.current !== newState) {
+        stateRef.current = newState;
+        setCursorState(newState);
       }
     };
 

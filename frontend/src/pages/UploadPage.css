@@ -138,10 +138,9 @@
 
 .minimal-input-group input, 
 .minimal-input-group textarea {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.06);
   color: var(--text);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
   padding: 16px 20px;
   border-radius: 4px;
   font-size: 1.1rem;

@@ -9,7 +9,7 @@
   pointer-events: none;
   z-index: 9999;
   transform: translate3d(-50%, -50%, 0);
-  will-change: transform, width, height, background, border-radius;
+  will-change: transform;
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
               height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
               background 0.3s, 
@@ -17,24 +17,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  mix-blend-mode: exclusion;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .custom-cursor.cursor-pointer {
   width: 48px;
   height: 48px;
-  background: transparent;
+  background: rgba(192, 112, 80, 0.2);
   border: 1px solid var(--accent);
-  mix-blend-mode: normal;
 }
 
 .custom-cursor.cursor-view {
   width: 80px;
   height: 80px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  mix-blend-mode: normal;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .cursor-text {

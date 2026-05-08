@@ -132,7 +132,8 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   color: var(--accent);
-  backdrop-filter: blur(10px);
+  color: var(--accent);
+  background: rgba(192, 112, 80, 0.15);
 }
 .hp-badge-dot {
   width: 7px; height: 7px;
@@ -203,11 +204,12 @@
   gap: 10px;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 14px;
   padding: 8px 8px 8px 18px;
   max-width: 520px;
   transition: border-color 0.3s, box-shadow 0.3s;
-  backdrop-filter: blur(16px);
 }
 .hp-hero-search:focus-within {
   border-color: var(--accent);
@@ -384,9 +386,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(26,31,46,0.85);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(26,31,46,0.95);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 12px;
   padding: 10px 16px;
   font-size: 0.78rem;
@@ -774,9 +775,8 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   color: #fff;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   padding: 4px 10px;
-  backdrop-filter: blur(4px);
 }
 
 .hp-journal-deco-box {
@@ -941,7 +941,7 @@
 }
 .hp-cta-prim:hover { background: #D4845A; transform: translateY(-2px); box-shadow: 0 16px 44px rgba(192,112,80,0.45); }
 .hp-cta-out {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.1);
   color: var(--text);
   border: 1.5px solid rgba(255,255,255,0.14);
   border-radius: 100px;
@@ -950,7 +950,6 @@
   font-family: 'Inter', sans-serif;
   cursor: pointer;
   transition: all 0.25s;
-  backdrop-filter: blur(8px);
 }
 .hp-cta-out:hover { border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 

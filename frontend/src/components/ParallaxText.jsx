@@ -13,7 +13,11 @@ const ParallaxText = ({ children, className }) => {
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
-    <MotionDiv ref={ref} style={{ y }} className={className}>
+    <MotionDiv 
+      ref={ref} 
+      style={{ y, willChange: 'transform' }} 
+      className={className}
+    >
       {children}
     </MotionDiv>
   );
